@@ -17,6 +17,7 @@ The output for every scenario is a line containing "Scenario #i:", where i is th
 
 ###### Sample Input
 3 3 
+
 1 2
 
 2 3
