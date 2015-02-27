@@ -66,8 +66,8 @@ Here if rank[a] == rank[b], (rank[a] + rank[b] + 1) & 1 must be 1.
 Also we indicate the tree of node a is remains stable(after find(each element), its rank value must be correct) by setting rank[root of a] to 0 if rank[a] != rank[b].
 Here if rank[a] != rank[b], (rank[a] + rank[b] + 1) & 1 must be 1. (a and b are already in different group)
 
-`
-#include <iostream>
+
+ #include <iostream>
 #include <stdio.h>
 #include <string.h>
 
@@ -146,4 +146,3 @@ int main()
         }
         return 0;
 }
-`
