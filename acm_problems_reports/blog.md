@@ -43,10 +43,10 @@ No suspicious bugs found!
 
 ### Explanation
 
-We can create a Merge-find set and apply union-find algorithm to it.
+> We can create a Merge-find set and apply union-find algorithm to it.
 
-In find function, the parent index of each node is updated recursively so that all the nodes we search through will be connected to the root directly.
-In union function, we find(a) and find(b), then connect the root of node a to the root of node b.
+> In find function, the parent index of each node is updated recursively so that all the nodes we search through will be connected to the root directly.
+> In union function, we find(a) and find(b), then connect the root of node a to the root of node b.
 
 However, in this problem, we only have the inputs of 2 nodes in opposite side, so we have to record a rank value for each node telling whether they are in the same group or not.
 
