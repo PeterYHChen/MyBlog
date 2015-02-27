@@ -41,10 +41,6 @@ Scenario #2:
 No suspicious bugs found!
 
 
-
-
-
-
 ### Explanation
 
 > We can create a Merge-find set and apply union-find algorithm to it.
