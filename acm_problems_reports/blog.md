@@ -16,20 +16,28 @@ The output for every scenario is a line containing "Scenario #i:", where i is th
 
 
 ###### Sample Input
-* 3 3
-* 1 2
-* 2 3
-* 1 3
-* 4 2
-* 1 2
-* 3 4
+3 3
+
+1 2
+
+2 3
+
+1 3
+
+4 2
+
+1 2
+
+3 4
  
 
 ###### Sample Output
-* Scenario #1:
+Scenario #1:
+
 Suspicious bugs found!
 
-* Scenario #2:
+Scenario #2:
+
 No suspicious bugs found!
 
 
