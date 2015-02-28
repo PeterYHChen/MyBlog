@@ -62,7 +62,9 @@ We use shelf[1002][1002] to record the number of books on position [i][j].
 
 In one way, given width w and height h, we simple traversal all elements and O(w * h) number of operations are needed to get the sum, but we can update the value of corresponding index in O(1) directly.
 
-In another way, we use shelf[i][j] to store the total books of the retangle [1][1] to [i][j]. So we get the sum with shelf[x2][y2] - shelf[x1-1][y1-1] in O(1) complexity. However, we need to update around (1001-w)*(1001-h) elements right after [i-1][j-1].
+In another way, we use shelf[i][j] to store the total books of the retangle [1][1] to [i][j]. 
+So we get the sum with shelf[x2][y2] - shelf[x1-1][y1-1] in O(1) complexity. 
+However, we need to update around (1001-w)*(1001-h) elements right after [i-1][j-1].
 
 > Therefore we need to use binary indexed tree, which allows to update value and query the sum of a range in O(log(n)) respectively.
 
@@ -72,11 +74,17 @@ Given an array a[1] to a[n], c[1] to c[n] and the range [i,j].
 
 Because we try to get sum(i, j) = sum(1, j) - sum(1, i-1), we turn this problem into how to calculate the sum(1, j) in O(log(n)) complexity, where n is the number of elements between i and j.
 
-From the natural properties of binary, we know any integer = the sum of a certain combination of 2^k1 + 2^k2 + ... + 2^kt. For example, 88 = 2^6 + 2^4 + 2^3, and that is how binary expression comes: 88 = 01011000. So we can try to get sum(1, 88) = sum(1, 64) + sum(65, 80) + sum(81, 88). What enlightens us here is that we can make c[64] = sum(a[1] to a[64]) = sum(1, 64), c[64+16] = c[80] = sum(65, 80), and c[88] = sum(81, 88), so that sum(1, 88) = c[64] + c[80] + c[88]. In the worst case, m = 11...111(binary), and log(m) is the number of 1s in m, we get sum(1, m) with O(log(m)) complexity.
+From the natural properties of binary, we know any integer = the sum of a certain combination of 2^k1 + 2^k2 + ... + 2^kt. 
+For example, 88 = 2^6 + 2^4 + 2^3, and that is how binary expression comes: 88 = 01011000. 
+So we can try to get sum(1, 88) = sum(1, 64) + sum(65, 80) + sum(81, 88). 
+What enlightens us here is that we can make c[64] = sum(a[1] to a[64]) = sum(1, 64), c[64+16] = c[80] = sum(65, 80), and c[88] = sum(81, 88), so that sum(1, 88) = c[64] + c[80] + c[88]. 
+In the worst case, m = 11...111(binary), and log(m) is the number of 1s in m, we get sum(1, m) with O(log(m)) complexity.
 
-But how can we ensure that c[i] stores the correct range of data? The concept of lowbit(x) = x & (-x) is introduced. The function lowbit(x) returns the value of the first rightmost bit of x that is 1, e.g., lowbit(5) = lowbit(101) = 1, lowbit(88) = lowbit(1011000) = 1000 = 8.
+But how can we ensure that c[i] stores the correct range of data? The concept of lowbit(x) = x & (-x) is introduced. 
+The function lowbit(x) returns the value of the first rightmost bit of x that is 1, e.g., lowbit(5) = lowbit(101) = 1, lowbit(88) = lowbit(1011000) = 1000 = 8.
 
-So we get c[88] = sum(81, 88) = sum(a[88-lowbit(88)+1], a[88]) = a[81] + a[82] + ... + a[88]. In general, c[i] = sum(a[i-lowbit(i)+1], a[i]) = a[i-lowbit(i)+1] + ... + a[i].
+So we get c[88] = sum(81, 88) = sum(a[88-lowbit(88)+1], a[88]) = a[81] + a[82] + ... + a[88]. 
+In general, c[i] = sum(a[i-lowbit(i)+1], a[i]) = a[i-lowbit(i)+1] + ... + a[i].
 
 If we want to update the value of a[i], we have to update all the c[j]s that contain a[i], e.g., if a[88] is changed, c[64+24] = c[88], c[64+32], c[128], c[256], c[512] will need to be changed. In the worst case, with the upper bound = m, we at most update O(log(m)) values in array c[].
 
