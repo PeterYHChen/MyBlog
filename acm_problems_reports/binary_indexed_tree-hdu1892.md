@@ -14,10 +14,15 @@ In the first line of the input file there is an Integer T(1<=T<=10), which means
 For each test case, in the first line there is an Integer Q(1<Q<=100,000), means the queries of the case. Then followed by Q queries. 
 There are 4 kind of queries, sum, add, delete and move. 
 example: 
+
 S x1 y1 x2 y2 means you should tell me the total books of the rectangle used (x1,y1)-(x2,y2) as the diagonal, including the two points. 
+
 A x1 y1 n1 means I put n1 books on the position (x1,y1) 
-D x1 y1 n1 means I move away n1 books on the position (x1,y1), if less than n1 books at that position, move away all of them. 
+
+D x1 y1 n1 means I move away n1 books on the position (x1,y1), if less than n1 books at that position, move away all of them.
+
 M x1 y1 x2 y2 n1 means you move n1 books from (x1,y1) to (x2,y2), if less than n1 books at that position, move away all of them. 
+
 Make sure that at first, there is one book on every grid and 0<=x1,y1,x2,y2<=1000,1<=n1<=100. 
 
 
