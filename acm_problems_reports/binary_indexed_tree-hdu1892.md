@@ -133,7 +133,7 @@ In the worst case, with the upper bound = m, we at most update O(log(m)) values 
 	}
 
 > Here is my AC code, explaining the implementation of 2-dimentional binary indexed tree.
-	
+
 	#include <iostream>
 	#include <stdio.h>
 	
@@ -208,7 +208,7 @@ In the worst case, with the upper bound = m, we at most update O(log(m)) values 
 	                        {
 	                        case 'S':
 	                                scanf("%d%d%d%d*c", &x1, &y1, &x2, &y2);
-	                                x1++; y1++; x2++; y2++;//increase by 2 because of counting from 1
+	                                x1++; y1++; x2++; y2++; // start counting from index 1
 	                                
 	                                // a small trick, ensure x1 < x2, y1 < y2
 	                                if(x1 > x2)
@@ -263,4 +263,3 @@ In the worst case, with the upper bound = m, we at most update O(log(m)) values 
 	        }
 	        return 0;
 	}
-
