@@ -31,7 +31,7 @@ M x1 y1 x2 y2 n1 means you move n1 books from (x1,y1) to (x2,y2), if less than n
 Make sure that at first, there is one book on every grid and 0<=x1,y1,x2,y2<=1000,1<=n1<=100. 
 
 
-###### Output
+##### Output
 At the beginning of each case, output "Case X:" where X is the index of the test case, then followed by the "S" queries. 
 
 For each "S" query, just print out the total number of books in that area. 
@@ -62,7 +62,7 @@ As the problem require, we need to calculate the total books of any possible ret
 
 Because queries could be at most 100,000, we need to both update and get the number of books on shelf at a suitable speed.
 
-> Brute-force method
+**Brute-force method**
 
 We use shelf[1002][1002] to record the number of books on position [i][j].
 
