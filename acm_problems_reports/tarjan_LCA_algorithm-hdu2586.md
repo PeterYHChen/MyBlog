@@ -51,24 +51,22 @@ Aother method is the Tarjan off-line lowest common ancestor algorithm, which I u
 
 ###### Details and Code
 Tarjan off-line LCA algorithm is based on the *union-find alogrithm*, and all queries should be stored in advance. 
-> (Please check my another doc *union_find_set-hdu1829* for more information)
+> (Please check my another doc **union_find_set-hdu1829** for more information)
 
-The tarjan() function is the main function in DFS loop. Each tarjan(*curr*) excutes the following steps,
+The tarjan() function is the main function in DFS loop. Each tarjan(**curr**) excutes the following steps,
 * loop through the queries
-* set *curr*'s parent to be itself
-
-> views the node *curr* as the root of a new tree
-
-> Based on each new tree with *curr* as the root, there are visited children and non-visited children. When tarjan() visits one of the non-visited children, node a, it is easily to know the lowest common ancestor of node a and another visited node b by doing find(b) operation, which return *curr*. So each tarjan() function would loop through the queries to check if any of them could get the result.
-
-* set *curr*ent node to be visited
+* set **curr**'s parent to be itself
+(views the node **curr** as the root of a new tree)
+* set **curr**ent node to be visited
 * accumulate the distance to its children
 * traverse each child of it with tarjan(child)
-* and set the parent of its children to be itself.
+* and set the parent of its children to be itself
+(merge the subtrees with its children as roots back to **curr** node)
 
-> merge the subtrees with its children as roots back to *curr* node
 
-> Noticed that once subtrees are merged back to the *curr* node, find() function would work to find the LCA bewtween an visited node and an unvisited node.
+> Based on each new tree with **curr** as the root, there are visited children and non-visited children. When tarjan() visits one of the non-visited children, node a, it is easily to know the lowest common ancestor of node a and another visited node b by doing find(b) operation, which return **curr**. So each tarjan() function would loop through the queries to check if any of them could get the result.
+
+> Noticed that once subtrees are merged back to the **curr** node, find() function would work to find the LCA bewtween an visited node and an unvisited node.
 
 
 
