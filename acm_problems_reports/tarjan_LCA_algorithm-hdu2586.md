@@ -7,17 +7,17 @@ Total Submission(s): 142 Accepted Submission(s): 66
 There are n houses in the village and some bidirectional roads connecting them. Every day peole always like to ask like this "How far is it if I want to go from house A to house B"? Usually it hard to answer. But luckily int this village the answer is always unique, since the roads are built in the way that there is a unique simple path("simple" means you can't visit a place twice) between every two houses. Yout task is to answer all these curious people.
  
 
-###### Input
+##### Input
 First line is a single integer T(T<=10), indicating the number of test cases.
 For each test case,in the first line there are two numbers n(2<=n<=40000) and m (1<=m<=200),the number of houses and the number of queries. The following n-1 lines each consisting three numbers i,j,k, separated bu a single space, meaning that there is a road connecting house i and house j,with length k(0<k<=40000).The houses are labeled from 1 to n.
 Next m lines each has distinct integers i and j, you are to answer the distance between house i and house j.
  
 
-###### Output
+##### Output
 For each test case,output m lines. Each line represents the answer of the query. Output a bland line after each test case.
  
 
-###### Sample Input
+##### Sample Input
 	2
 	3 2
 	1 2 10
@@ -31,7 +31,7 @@ For each test case,output m lines. Each line represents the answer of the query.
 	2 1
  
 
-###### Sample Output
+##### Sample Output
 	10
 	25
 	100
@@ -39,17 +39,17 @@ For each test case,output m lines. Each line represents the answer of the query.
 
 ### Explanation
 
-###### Problem Analysis
+##### Problem Analysis
 To some degree, this problem definition is very confined. We can easily construct a graph with houses as its nodes and roads as its edges. Specially, this graph is a strongly connected graph, which means every node could be reached by the other node in the same graph. Since paths are unique, no cycles are allowed, and thus something like a spanning tree could be constructed.
 
 Because the graph could be pretty big, with 40000 nodes at most and 39999 edges accordingly, an adjacency list is a better choice than an adjacent matrix to store the edges values. The number of queries is small (m <= 200).
 
-###### Possible Solutions
+##### Possible Solutions
 One method is to use BFS. For each query, starting from one node, loop through all its children, accumulate the distance to its children, and push them into a queue. Do it again and again, until the function meets another node. Then the accumulated distance is the final answer. O(m*n) complexity.
 
 Aother method is the Tarjan off-line lowest common ancestor algorithm, which I use in my code. The lowest common ancestor of two nodes a and b in a rooted tree T is the node g that is an ancestor of both a and b and that has the greatest depth in T. Starting from the root of a tree, go through each child with DFS, accumulate the distance from the root, calculate the LCA of node a and b, and get the result = (distance[a] + distance[b] - 2*distance[root]).
 
-###### Details and Code
+##### Details and Code
 Tarjan off-line LCA algorithm is based on the *union-find alogrithm*, and all queries should be stored in advance. 
 > (Please check my another doc **union_find_set-hdu1829** for more information)
 
@@ -64,7 +64,7 @@ The tarjan() function is the main function in DFS loop. Each tarjan(**curr**) ex
 (merge the subtrees with its children as roots back to **curr** node)
 
 
-> Based on each new tree with **curr** as the root, there are visited children and non-visited children. When tarjan() visits one of the non-visited children, node a, it is easily to know the lowest common ancestor of node a and another visited node b by doing find(b) operation, which return **curr**. So each tarjan() function would loop through the queries to check if any of them could get the result.
+Based on each new tree with **curr** as the root, there are visited children and non-visited children. When tarjan() visits one of the non-visited children, node a, it is easily to know the lowest common ancestor of node a and another visited node b by doing find(b) operation, which return **curr**. So each tarjan() function would loop through the queries to check if any of them could get the result.
 
 > Noticed that once subtrees are merged back to the **curr** node, find() function would work to find the LCA bewtween an visited node and an unvisited node.
 
