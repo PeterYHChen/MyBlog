@@ -11,7 +11,7 @@ When coming into our training room, a lot of books are in my eyes. And every tim
 To make the problem easier, we divide the room into different grids and a book can only stayed in one grid. The length and the width of the room are less than 1000. I can move one book from one position to another position, take away one book from a position or bring in one book and put it on one position. 
 
 
-###### Input
+##### Input
 In the first line of the input file there is an Integer T(1<=T<=10), which means the number of test cases in the input file. Then N test cases are followed. 
 
 For each test case, in the first line there is an Integer Q(1<Q<=100,000), means the queries of the case. Then followed by Q queries. 
@@ -37,7 +37,7 @@ At the beginning of each case, output "Case X:" where X is the index of the test
 For each "S" query, just print out the total number of books in that area. 
 
 
-###### Sample Input
+##### Sample Input
 	2
 	3
 	S 1 1 1 1
@@ -49,7 +49,7 @@ For each "S" query, just print out the total number of books in that area.
 	S 1 1 1 2
 
 
-###### Sample Output
+##### Sample Output
 	Case 1:
 	1
 	3
@@ -72,9 +72,9 @@ In another way, we use shelf[i][j] to store the total books of the retangle [1][
 
 However, we need to update around (1001-w)*(1001-h) elements right after [i-1][j-1].
 
-> Therefore we need to use binary indexed tree, which allows to update value and query the sum of a range in O(log(n)) respectively.
+**Therefore we need to use binary indexed tree, which allows to update value and query the sum of a range in O(log(n)) respectively.**
 
-> For better understanding, we start from one-dimentional binary indexed tree.
+**For better understanding, we start from one-dimentional binary indexed tree.**
 
 Given an array a[1] to a[n], c[1] to c[n] and the range [i,j].
 
@@ -97,7 +97,7 @@ If we want to update the value of a[i], we have to update all the c[j]s that con
 
 In the worst case, with the upper bound = m, we at most update O(log(m)) values in array c[].
 
-> Therefore, we achieve to goal of both updating and getting sum in O(log(n)) complexity.
+**Therefore, we achieve to goal of both updating and getting sum in O(log(n)) complexity.**
 
 	#define lowbit(x) (x & (-x))
 
